@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import importlib
 from collections.abc import Callable
 from types import ModuleType
@@ -13,6 +14,7 @@ def methods_importer(
             if isinstance(module, ModuleType):
                 mod = module
             elif isinstance(module, str):
+
 
                 mod = importlib.import_module(module)
             else:
