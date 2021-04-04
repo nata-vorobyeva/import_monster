@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import importlib
 from collections.abc import Callable
 from types import ModuleType
