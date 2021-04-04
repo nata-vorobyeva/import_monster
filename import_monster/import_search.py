@@ -29,12 +29,12 @@ def methods_importer(
     return met_list
 
 
-print(methods_importer("__import__", ["builtins"]))
-# <built-in function __import__>
+if __name__ == "__main__":
+    print(methods_importer("__import__", ["builtins"]))
+    # <built-in function __import__>
 
-print(methods_importer("nothing", ["builtins"]))
-# None
+    print(methods_importer("nothing", ["builtins"]))
+    # None
 
-
-print(methods_importer("sum", [math, builtins, scipy]))
-# <built-in function sum>
+    print(methods_importer("sum", [math, builtins, scipy]))
+    # <built-in function sum>
