@@ -15,8 +15,6 @@ def methods_importer(
                 mod = module
             elif isinstance(module, str):
 
-
-
                 mod = importlib.import_module(module)
             else:
                 raise TypeError("Must be list of strings or ModuleType")
