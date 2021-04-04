@@ -1,6 +1,6 @@
 PACKAGES="import_monster"
 
-all: install-all black clean
+all: install black clean
 
 black:
 	@black ${PACKAGES}
@@ -25,4 +25,4 @@ install-dev:
 install-package:
 	@pip install -r requirements.txt
 
-install-all: install-dev install-package
+install: install-dev install-package
