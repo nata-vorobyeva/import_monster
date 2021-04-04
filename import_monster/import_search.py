@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
 import importlib
-
 from collections.abc import Callable
 from types import ModuleType
 from typing import List, Union
 
 
-def methods_importer(method_name: str, modules: List[Union[str, ModuleType]]) -> List[Callable]:
+def methods_importer(method_name: str, modules: List[Union[str, ModuleType]]) \
+        -> List[Callable]:
     met_list = []
     for module in modules:
         try:
