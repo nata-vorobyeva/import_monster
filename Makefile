@@ -1,6 +1,6 @@
 PACKAGES="import_monster"
 
-all: install black
+all: install-all black clean
 
 black:
 	@black ${PACKAGES}
@@ -20,9 +20,9 @@ clean:
 	@rm -f .flake
 
 install-dev:
-    @pip install -r requirements-dev.txt
+	@pip install -r requirements-dev.txt
 
 install-package:
-    @pip install -r requirements.txt
+	@pip install -r requirements.txt
 
 install-all: install-dev install-package
