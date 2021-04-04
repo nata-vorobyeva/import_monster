@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
+import builtins
 import importlib
+import math
 from collections.abc import Callable
 from types import ModuleType
 from typing import List, Union
+
+import scipy
 
 
 def methods_importer(
@@ -23,3 +27,14 @@ def methods_importer(
         except ImportError:
             continue
     return met_list
+
+
+print(methods_importer("__import__", ["builtins"]))
+# <built-in function __import__>
+
+print(methods_importer("nothing", ["builtins"]))
+# None
+
+
+print(methods_importer("sum", [math, builtins, scipy]))
+# <built-in function sum>
