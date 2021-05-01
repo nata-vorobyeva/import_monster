@@ -1,0 +1,8 @@
+setup.py
+import_monster/__init__.py
+import_monster/import_search.py
+project_test.egg-info/PKG-INFO
+project_test.egg-info/SOURCES.txt
+project_test.egg-info/dependency_links.txt
+project_test.egg-info/requires.txt
+project_test.egg-info/top_level.txt
