@@ -16,7 +16,7 @@ def parse_requirements() -> tuple:
 
 
 setup(
-    name="project_test",
+    name="SoftDev",
     packages=find_packages(exclude=("tests",)),
     python_requires="~=3.7",
     install_requires=parse_requirements(),
