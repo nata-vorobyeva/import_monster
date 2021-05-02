@@ -1,51 +1,41 @@
 # -*- coding: utf-8 -*-
-# import math
-import types
+import math
 
-# import numpy as np
-# import pytest
-import tests.test_module as t
+import numpy as np
+import pytest
+
 from import_monster import methods_importer
 
 
 class TestImportMonster:
-    def test_callable_method(self):
-        assert isinstance(t, types.ModuleType)
-        isok = methods_importer(
-            method_name="test_callable", modules=[t])
-        assert isok == [t.test_callable]
+    @pytest.mark.parametrize(
+        "test_case,expected_result",
+        [
+            (("__import__", ["builtins"]), [__import__]),
+            (("sqrt", ["numpy", "math", "builtins"]), [np.sqrt, math.sqrt]),
+            (("min", ["numpy", "math", "builtins"]), [np.min, min]),
+            (("nothing", ["builtins", "scipy"]), [])
+        ],
+    )
+    def test_callable_list(self, test_case, expected_result):
+        """
+        Tests main functionality:
+        search method name in list of modules and return list of modules containing this method
+        """
+        assert list(methods_importer(*test_case)) == expected_result
 
-    def test_const(self):
-        assert isinstance(t, types.ModuleType)
-        isok = methods_importer(method_name="const", modules=[t])
-        assert isok == []
+    def test_wrong_module_type(self):
+        """
+        Tests that the function methods_importer checks module type.
+        If it's integer, the function should raise TypeError
+        """
+        with pytest.raises(TypeError):
+            methods_importer(method_name="sum", modules=[int(42)])
 
-    def test_non_callable_method(self):
-        assert isinstance(t, types.ModuleType)
-        isok = methods_importer(
-            method_name="test_non_callable", modules=[t])
-        assert isok == []
-
-    # def test_incorrect_type(self):
-    #     with pytest.raises(TypeError):
-    #         methods_importer(method_name="test_callable", modules=[1])
-    #
-    # def test_str_module(self):
-    #     isok = methods_importer(method_name="mean", modules=["numpy"])
-    #     assert isok == [np.mean]
-    #
-    # def test_two_modules_callable(self):
-    #     isok = methods_importer(method_name="sin", modules=["numpy", "math"])
-    #     assert isok == [np.sin, math.sin]
-    #
-    # def test_two_more_modules_callable(self):
-    #     isok = methods_importer(method_name="mean", modules=["numpy", t])
-    #     assert isok == [np.mean, t.mean]
-    #
-    # def two_modules_non_callable_test(self):
-    #     isok = methods_importer(method_name="pi", modules=["numpy", "math"])
-    #     assert isok == []
-    #
-    # def test_methods_importer_other_module(self):
-    #     isok = methods_importer(method_name="mean", modules=[t, "other"])
-    #     assert isok == [t.mean]
+    def test_output_type(self):
+        """
+        Tests that the function returns type List.
+        If it's integer, function raises TypeError
+        """
+        case = methods_importer("nothing", ["builtins"])
+        assert isinstance(case, list)

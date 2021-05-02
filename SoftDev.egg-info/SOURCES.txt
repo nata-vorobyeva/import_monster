@@ -1,8 +1,0 @@
-setup.py
-SoftDev.egg-info/PKG-INFO
-SoftDev.egg-info/SOURCES.txt
-SoftDev.egg-info/dependency_links.txt
-SoftDev.egg-info/requires.txt
-SoftDev.egg-info/top_level.txt
-import_monster/__init__.py
-import_monster/import_search.py

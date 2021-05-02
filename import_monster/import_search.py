@@ -6,6 +6,7 @@ from collections.abc import Callable
 from types import ModuleType
 from typing import List, Union
 
+import numpy
 import scipy
 
 
