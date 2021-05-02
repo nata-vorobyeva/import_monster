@@ -35,7 +35,6 @@ class TestImportMonster:
     def test_output_type(self):
         """
         Tests that the function returns type List.
-        If it's integer, function raises TypeError
         """
         case = methods_importer("nothing", ["builtins"])
         assert isinstance(case, list)
