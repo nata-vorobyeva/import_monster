@@ -4,27 +4,26 @@ import types
 
 # import numpy as np
 # import pytest
-import test_module
-
+import tests.test_module as t
 from import_monster import methods_importer
 
 
 class TestImportMonster:
     def test_callable_method(self):
-        assert isinstance(test_module, types.ModuleType)
+        assert isinstance(t, types.ModuleType)
         isok = methods_importer(
-            method_name="test_callable", modules=[test_module])
-        assert isok == [test_module.test_callable], "hhh"
+            method_name="test_callable", modules=[t])
+        assert isok == [t.test_callable]
 
     def test_const(self):
-        assert isinstance(test_module, types.ModuleType)
-        isok = methods_importer(method_name="const", modules=[test_module])
+        assert isinstance(t, types.ModuleType)
+        isok = methods_importer(method_name="const", modules=[t])
         assert isok == []
 
     def test_non_callable_method(self):
-        assert isinstance(test_module, types.ModuleType)
+        assert isinstance(t, types.ModuleType)
         isok = methods_importer(
-            method_name="test_non_callable", modules=[test_module])
+            method_name="test_non_callable", modules=[t])
         assert isok == []
 
     # def test_incorrect_type(self):
@@ -40,13 +39,13 @@ class TestImportMonster:
     #     assert isok == [np.sin, math.sin]
     #
     # def test_two_more_modules_callable(self):
-    #     isok = methods_importer(method_name="mean", modules=["numpy", test_module])
-    #     assert isok == [np.mean, test_module.mean]
+    #     isok = methods_importer(method_name="mean", modules=["numpy", t])
+    #     assert isok == [np.mean, t.mean]
     #
     # def two_modules_non_callable_test(self):
     #     isok = methods_importer(method_name="pi", modules=["numpy", "math"])
     #     assert isok == []
     #
     # def test_methods_importer_other_module(self):
-    #     isok = methods_importer(method_name="mean", modules=[test_module, "other"])
-    #     assert isok == [test_module.mean]
+    #     isok = methods_importer(method_name="mean", modules=[t, "other"])
+    #     assert isok == [t.mean]
