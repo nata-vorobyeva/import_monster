@@ -23,14 +23,14 @@ jobs:
       - name: Test with pytest
         run: make test
 
-#  pre-commit:
-#
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#      - uses: actions/setup-python@v2
-#      - name: Install pre-commit
-#        run: make install-pre-commit
-#      - name: Run-pre-commit
-#        run: make run-pre-commit
+  pre-commit:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - name: Install pre-commit
+        run: make install-pre-commit
+      - name: Run-pre-commit
+        run: make run-pre-commit
