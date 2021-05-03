@@ -1,0 +1,36 @@
+name: Push events on master branch
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  push-event:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Install dependencies
+        run: make install-dev
+      - name: Test with pytest
+        run: make test
+
+  pre-commit:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - name: Install pre-commit
+        run: make install-pre-commit
+      - name: Run-pre-commit
+        run: make run-pre-commit

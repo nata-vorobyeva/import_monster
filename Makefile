@@ -28,15 +28,18 @@ clean:
 uninstall:
 	@pip uninstall ${PACKAGE_NAME} -y
 
-install-dev: uninstall
+install-dev:
 	@pip install -r ${REQUIREMENTS_DEV}
 	@pip install -e .
 
-install: uninstall
+install:
 	@pip install -r ${REQUIREMENTS}
 	@echo "Done"
 
 install-pre-commit: install-dev
 	@pre-commit install
+
+run-pre-commit:
+	@pre-commit run
 
 .PHONY: all install-dev uninstall clean test
